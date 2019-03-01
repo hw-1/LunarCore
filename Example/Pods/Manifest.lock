@@ -1,0 +1,16 @@
+PODS:
+  - LunarCore (0.1.0)
+
+DEPENDENCIES:
+  - LunarCore (from `../`)
+
+EXTERNAL SOURCES:
+  LunarCore:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LunarCore: e7e0558671729dfc8aa0c1841f811e5a52098ea6
+
+PODFILE CHECKSUM: 063d293b2dee9bc1c16070f88a7ae1de565ad665
+
+COCOAPODS: 1.5.3

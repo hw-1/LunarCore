@@ -1,0 +1,6 @@
+use_frameworks!
+target 'LunarCore_Tests' do
+  pod 'LunarCore', :path => '../'
+  
+  
+end

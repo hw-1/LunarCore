@@ -1,0 +1,22 @@
+{
+  "name": "LunarCore",
+  "version": "0.1.0",
+  "summary": "A short description of LunarCore.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/git/LunarCore",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "git": "git@users.noreply.github.com"
+  },
+  "source": {
+    "git": "https://github.com/git/LunarCore.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "LunarCore/Classes/**/*"
+}
