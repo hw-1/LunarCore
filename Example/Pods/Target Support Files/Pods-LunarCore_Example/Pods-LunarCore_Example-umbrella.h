@@ -10,8 +10,7 @@
 #endif
 #endif
 
-#import "LunarCore.h"
 
-FOUNDATION_EXPORT double LunarCoreVersionNumber;
-FOUNDATION_EXPORT const unsigned char LunarCoreVersionString[];
+FOUNDATION_EXPORT double Pods_LunarCore_ExampleVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_LunarCore_ExampleVersionString[];
 

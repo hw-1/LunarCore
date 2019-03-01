@@ -12,12 +12,12 @@ static const int minYear        = 1890;     // 最小年限
 static const int maxYear        = 2100;     // 最大年限
 static const int weekStart      = 0;        // 周首日（可改成 app 配置）
 
+
 /**
- *  获得本地化的字符串 这里 app 可以自行实现
- *
- *  @param text key
- *
- *  @return 本地化字符串
+ 获得本地化的字符串 这里 app 可以自行实现
+
+ @param key key
+ @return 本地化字符串
  */
 static inline NSString *i18n(NSString *key) {
     return key;
@@ -1225,15 +1225,15 @@ int getSolarMonthDays(int year, int month) {
  *
  *  @return 格式化后的日期
  */
-NSMutableDictionary *formatDate(int year, int month, int day) {
+NSMutableDictionary *formatDate(NSInteger year, NSInteger month, NSInteger day) {
     
     NSDate *now = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     gregorian.timeZone = timeZone();
     NSDateComponents *components = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:now];
-    int _year = year;
-    int _month = month - 1;
-    int _day = (day > 0) ? day: (int)components.day;
+    NSInteger _year = year;
+    NSInteger _month = month - 1;
+    NSInteger _day = (day > 0) ? day: (int)components.day;
     
     if (year < (minYear ? minYear : minYear + 1) || year > maxYear) {
         return [@{@"error": @100, @"msg": errorCode()[@100]} mutableCopy];
@@ -1255,7 +1255,7 @@ NSMutableDictionary *formatDate(int year, int month, int day) {
  *
  *  @return YES 表示处于农历新年
  */
-BOOL isNewLunarYear(int _year, int _month, int _day) {
+BOOL isNewLunarYear(NSInteger _year, NSInteger _month, NSInteger _day) {
     
     int *springFestivalDate = springFestival[_year - minYear];
     int springFestivalMonth = springFestivalDate[0];
@@ -1428,7 +1428,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     return self;
 }
 
--(NSString*)yiji{
+-(NSDictionary*)yiji{
     if (_yiji == nil){
         NSString * yijiPath = getYijipath();
         NSDictionary * yiji =  [NSDictionary dictionaryWithContentsOfFile:yijiPath];
@@ -1621,7 +1621,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     
     NSArray * weekdayAlias = lunarCalendarData()[@"weekdayAlias"];
     NSString * weekSymbol = [NSString stringWithFormat:@"星期%@",weekdayAlias[weekday - 1]];
-    NSString * shortSolarSymbol = [NSString stringWithFormat:@"%ld月%d日",(long)_month,_day];
+    NSString * shortSolarSymbol = [NSString stringWithFormat:@"%ld月%ld日",(long)_month,(long)_day];
     NSString * sorlarDay = [NSString stringWithFormat:@"%ld",(long)_day];
     
     

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "534AFE296BB01E7D3E452DADA97B4EF2"
-               BuildableName = "LunarCore.framework"
-               BlueprintName = "LunarCore"
+               BlueprintIdentifier = "59A83656FEAAD397BAB068452ABE6C32"
+               BuildableName = "Pods_LunarCore_Example.framework"
+               BlueprintName = "Pods-LunarCore_Example"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "534AFE296BB01E7D3E452DADA97B4EF2"
-            BuildableName = "LunarCore.framework"
-            BlueprintName = "LunarCore"
+            BlueprintIdentifier = "59A83656FEAAD397BAB068452ABE6C32"
+            BuildableName = "Pods_LunarCore_Example.framework"
+            BlueprintName = "Pods-LunarCore_Example"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

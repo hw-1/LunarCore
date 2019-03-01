@@ -1,6 +1,13 @@
 use_frameworks!
-target 'LunarCore_Tests' do
+
+platform :ios, '8.0'
+
+target 'LunarCore_Example' do
   pod 'LunarCore', :path => '../'
-  
-  
+
+  target 'LunarCore_Tests' do
+    inherit! :search_paths
+
+    
+  end
 end
