@@ -1447,7 +1447,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     NSArray * jianChu12Shen = lunarCalendarData()[@"jianChu12Shen"];
     NSInteger jx = [jianChu12Shen[jiXiongIndex] indexOfObject:lunarDayDiZhi];
     NSInteger gz =  getGanZhiIndex(ganZhiDayName);
-    NSString * key = [NSString stringWithFormat:@"jx%ld_gz%ld",(long)jx,gz];
+    NSString * key = [NSString stringWithFormat:@"jx%ld_gz%ld",jx,gz];
     NSDictionary * yjDict = self.yiji[@"yj"];
     NSString * yj = yjDict[key];
     return [yj componentsSeparatedByString:@","];
@@ -1523,7 +1523,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     //    NSString * lunarDayDiZhi = [ganZhiDayName substringFromIndex: [ganZhiDayName length] - 1];
     NSInteger jiXiongIndex =   [lunarCalendarData()[@"earthlyBranches2"] indexOfObject:lunarMonthDiZhi] ;
     NSInteger gz =  getGanZhiIndex(ganZhiDayName);
-    NSString * key = [NSString stringWithFormat:@"jx%ld_gz%ld",(long)jiXiongIndex,gz];
+    NSString * key = [NSString stringWithFormat:@"jx%ld_gz%ld",jiXiongIndex,gz];
     NSDictionary * jxDict = self.yiji[@"jx"];
     NSString * jx = jxDict[key];
     return [jx componentsSeparatedByString:@","];
