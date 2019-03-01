@@ -27,18 +27,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0AB3D2522D86BC9AEF60BD2CDF3CE2A8 /* Pods_LunarCore_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LunarCore_Tests.framework; path = "Pods-LunarCore_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AB3D2522D86BC9AEF60BD2CDF3CE2A8 /* Pods_LunarCore_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LunarCore_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BCD2822C6A12B687B25A024B0F5519F /* Pods-LunarCore_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LunarCore_Tests-resources.sh"; sourceTree = "<group>"; };
 		21C3C71022AB67E40FF4FC24B96D5326 /* LunarCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LunarCore-prefix.pch"; sourceTree = "<group>"; };
-		3B2C380C839575BEEFD695D48E89C6FD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		3B2C380C839575BEEFD695D48E89C6FD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5280544297AA61AE2148AD7B9A72972D /* Pods-LunarCore_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LunarCore_Tests-umbrella.h"; sourceTree = "<group>"; };
 		55BDC06D168B650A1C82A9FF7EA3BC0A /* Pods-LunarCore_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LunarCore_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5C4AC151BCDCCB8115D535424BCC5C6C /* Pods-LunarCore_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LunarCore_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		69FAE0A93BA0770917CD92EAF7A48620 /* LunarCore.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = LunarCore.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		69FAE0A93BA0770917CD92EAF7A48620 /* LunarCore.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = LunarCore.podspec; sourceTree = "<group>"; };
 		7595CEA71B873DFF187436E2B3D60794 /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = LunarCore/Classes/ReplaceMe.m; sourceTree = "<group>"; };
 		817543F2AF3ED00BBBC52437F7E0DC7C /* LunarCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LunarCore.modulemap; sourceTree = "<group>"; };
 		8DE763977270B96DD5237319DAC22874 /* Pods-LunarCore_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LunarCore_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94EE4BB863E4199F63FB2D036E743564 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B421922A5F564FDD97B6D7ED9173BCB9 /* Pods-LunarCore_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LunarCore_Tests-dummy.m"; sourceTree = "<group>"; };
 		B71F85D6B70100A1432DCB81A5D68C6E /* LunarCore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LunarCore.xcconfig; sourceTree = "<group>"; };
@@ -47,10 +47,10 @@
 		CF90AD90C354151F3281F69B87B04283 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F1CC33C3E7F372C5C491498240965BDC /* Pods-LunarCore_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LunarCore_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F312720FE4DA07C4140A1A7B7363071F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		F312720FE4DA07C4140A1A7B7363071F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F98669E32E8B748B8020451DAF68A921 /* Pods-LunarCore_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LunarCore_Tests.modulemap"; sourceTree = "<group>"; };
 		FEF41CDAE522D424AFDCF9A79B2902E5 /* Pods-LunarCore_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LunarCore_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		FF17165AAFA40099A7DA483CCE3C81A3 /* LunarCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LunarCore.framework; path = LunarCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF17165AAFA40099A7DA483CCE3C81A3 /* LunarCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LunarCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,8 +495,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
