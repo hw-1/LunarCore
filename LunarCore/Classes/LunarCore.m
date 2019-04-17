@@ -12,12 +12,12 @@ static const int minYear        = 1890;     // 最小年限
 static const int maxYear        = 2100;     // 最大年限
 static const int weekStart      = 0;        // 周首日（可改成 app 配置）
 
-
 /**
- 获得本地化的字符串 这里 app 可以自行实现
-
- @param key key
- @return 本地化字符串
+ *  获得本地化的字符串 这里 app 可以自行实现
+ *
+ *  @param text key
+ *
+ *  @return 本地化字符串
  */
 static inline NSString *i18n(NSString *key) {
     return key;
@@ -32,60 +32,6 @@ static inline NSString *i18n(NSString *key) {
  */
 static inline NSString *$(NSString *text) {
     return text ?: @"";
-}
-
-/**
- *  缓存 主要是缓存节气信息
- */
-@interface LCMemoryCache : NSObject
-
-@property (nonatomic, assign) int current;
-@property (nonatomic, strong) NSMutableDictionary *cache;
-
-- (id)get:(id)key;
-- (void)setKey:(id)key value:(id)value;
-- (void)clear;
-
-@end
-
-@implementation LCMemoryCache
-
-- (instancetype)init {
-    if (self = [super init]) {
-        _cache = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
-
-- (id)get:(id)key {
-    return self.cache[key];
-}
-
-- (void)setKey:(id)key value:(id)value {
-    self.cache[key] = value;
-}
-
-- (void)clear {
-    [self.cache removeAllObjects];
-}
-
-- (void)setCurrent:(int)current {
-    if (_current != current) {
-        _current = current;
-        [self clear];
-    }
-}
-
-@end
-
-// Memory Cache
-LCMemoryCache *memoryCache() {
-    static LCMemoryCache *_memCache = nil;
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
-        _memCache = [[LCMemoryCache alloc] init];
-    });
-    return _memCache;
 }
 
 // GMT 0 的时区
@@ -1005,13 +951,7 @@ NSString* getLunarDayName(NSTimeInterval date) {
 }
 
 /** 根据生日计算星座  @param birthday 生日 eg:2016-10-25  @return 星座 */
-NSString* getAstroWithBirthday(NSTimeInterval birthday){
-    NSDate * date = [NSDate dateWithTimeIntervalSince1970:birthday];
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
-    NSInteger month = components.month;
-    NSInteger day = components.day;
-    
+NSString* getAstroWithBirthday(NSInteger month,NSInteger day) {
     NSString *astroString = @"魔羯水瓶双鱼白羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯";
     NSString *astroFormat = @"102123444543";
     NSString *result;
@@ -1049,9 +989,9 @@ NSInteger getGanZhiIndex(NSString* gznZhi){
 ///宜忌文件路径
 NSString * getYijipath(){
     NSString* mainBundlePath = [[NSBundle mainBundle] resourcePath];
-    NSString* frameworks = [mainBundlePath stringByAppendingPathComponent:@"Frameworks"];
-    NSString* frameworkPath = [frameworks stringByAppendingPathComponent:@"LunarCore.framework"];
-    NSString* BundlePath = [frameworkPath stringByAppendingPathComponent:@"LunarCore.bundle"];
+//    NSString* frameworks = [mainBundlePath stringByAppendingPathComponent:@"Frameworks"];
+//    NSString* frameworkPath = [frameworks stringByAppendingPathComponent:@"LunarCore.framework"];
+    NSString* BundlePath = [mainBundlePath stringByAppendingPathComponent:@"LunarCore.bundle"];
     NSString* yiji = [BundlePath stringByAppendingPathComponent:@"yiji.plist"];
     return yiji;
 }
@@ -1225,15 +1165,15 @@ int getSolarMonthDays(int year, int month) {
  *
  *  @return 格式化后的日期
  */
-NSMutableDictionary *formatDate(NSInteger year, NSInteger month, NSInteger day) {
+NSMutableDictionary *formatDate(int year, int month, int day) {
     
     NSDate *now = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     gregorian.timeZone = timeZone();
     NSDateComponents *components = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:now];
-    NSInteger _year = year;
-    NSInteger _month = month - 1;
-    NSInteger _day = (day > 0) ? day: (int)components.day;
+    int _year = year;
+    int _month = month - 1;
+    int _day = (day > 0) ? day: (int)components.day;
     
     if (year < (minYear ? minYear : minYear + 1) || year > maxYear) {
         return [@{@"error": @100, @"msg": errorCode()[@100]} mutableCopy];
@@ -1255,7 +1195,7 @@ NSMutableDictionary *formatDate(NSInteger year, NSInteger month, NSInteger day) 
  *
  *  @return YES 表示处于农历新年
  */
-BOOL isNewLunarYear(NSInteger _year, NSInteger _month, NSInteger _day) {
+BOOL isNewLunarYear(int _year, int _month, int _day) {
     
     int *springFestivalDate = springFestival[_year - minYear];
     int springFestivalMonth = springFestivalDate[0];
@@ -1428,7 +1368,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     return self;
 }
 
--(NSDictionary*)yiji{
+-(NSString*)yiji{
     if (_yiji == nil){
         NSString * yijiPath = getYijipath();
         NSDictionary * yiji =  [NSDictionary dictionaryWithContentsOfFile:yijiPath];
@@ -1447,7 +1387,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     NSArray * jianChu12Shen = lunarCalendarData()[@"jianChu12Shen"];
     NSInteger jx = [jianChu12Shen[jiXiongIndex] indexOfObject:lunarDayDiZhi];
     NSInteger gz =  getGanZhiIndex(ganZhiDayName);
-    NSString * key = [NSString stringWithFormat:@"jx%ld_gz%ld",jx,gz];
+    NSString * key = [NSString stringWithFormat:@"jx%ld_gz%ld",(long)jx,gz];
     NSDictionary * yjDict = self.yiji[@"yj"];
     NSString * yj = yjDict[key];
     return [yj componentsSeparatedByString:@","];
@@ -1523,7 +1463,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     //    NSString * lunarDayDiZhi = [ganZhiDayName substringFromIndex: [ganZhiDayName length] - 1];
     NSInteger jiXiongIndex =   [lunarCalendarData()[@"earthlyBranches2"] indexOfObject:lunarMonthDiZhi] ;
     NSInteger gz =  getGanZhiIndex(ganZhiDayName);
-    NSString * key = [NSString stringWithFormat:@"jx%ld_gz%ld",jiXiongIndex,gz];
+    NSString * key = [NSString stringWithFormat:@"jx%ld_gz%ld",(long)jiXiongIndex,gz];
     NSDictionary * jxDict = self.yiji[@"jx"];
     NSString * jx = jxDict[key];
     return [jx componentsSeparatedByString:@","];
@@ -1550,18 +1490,9 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     int year = [inputDate[@"year"] intValue];
     int month = [inputDate[@"month"] intValue];
     int day = [inputDate[@"day"] intValue];
-    
-    [memoryCache() setCurrent:year];
-    
+
     // 二十四节气
-    NSMutableDictionary *termList;
-    id termListCache = [memoryCache() get:@"termList"];
-    if (termListCache) {
-        termList = (NSMutableDictionary *)termListCache;
-    } else {
-        termList = getYearTerm(year);
-        [memoryCache() setKey:@"termList" value:termList];
-    }
+    NSMutableDictionary * termList = getYearTerm(year);
     
     NSString * threeDogsDay = [self getThreeDogDays:_year _month:_month _day:_day];
     
@@ -1621,7 +1552,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     
     NSArray * weekdayAlias = lunarCalendarData()[@"weekdayAlias"];
     NSString * weekSymbol = [NSString stringWithFormat:@"星期%@",weekdayAlias[weekday - 1]];
-    NSString * shortSolarSymbol = [NSString stringWithFormat:@"%ld月%ld日",(long)_month,(long)_day];
+    NSString * shortSolarSymbol = [NSString stringWithFormat:@"%ld月%d日",(long)_month,_day];
     NSString * sorlarDay = [NSString stringWithFormat:@"%ld",(long)_day];
     
     
@@ -1643,7 +1574,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
                                   @"GanZhiDay": ganZhiDayName,
                                   @"zodiac": $(getYearZodiac(GanZhiYear)),
                                   @"term": $(termList[formatDay(month, day)]),
-                                  @"astro": $(getAstroWithBirthday(date.timeIntervalSince1970)),
+                                  @"astro": $(getAstroWithBirthday( month + 1, day)),
                                   @"weekOfYear" : @(weekOfYear),
                                   @"intervalDayFromNow":@(intervalDayFromNow(date)),
                                   @"emperorYear": @(emperorYear),

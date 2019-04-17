@@ -8,24 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-
 /**
- 获取指定年月的日历数据
-
- @param _year 公历年
- @param _month 公历月
- @return 该月日历
+ *  获取指定年月的日历数据
+ *
+ *  @param _year  公历年
+ *  @param _month 公历月
+ *
+ *  @return 该月日历
  */
 NSMutableDictionary *calendar(int _year, int _month);
 
 
 /**
- 农历转换成公历
-
- @param _year 农历年
- @param _month 农历月
- @param _day 农历月
- @return 公历年月日
+ *  农历转换成公历
+ *
+ *  @param _year  农历年
+ *  @param _month 农历月
+ *  @param _month 农历日
+ *
+ *  @return 公历年月日
  */
 NSMutableDictionary *lunarToSolar(int _year, int _month, int _day);
 
