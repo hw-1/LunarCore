@@ -247,6 +247,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = git;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = KH6L6V698J;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -257,6 +260,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -523,6 +527,7 @@
 			baseConfigurationReference = E3B961B9B50F85E8C5BFC58B /* Pods-LunarCore_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KH6L6V698J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LunarCore/LunarCore-Prefix.pch";
 				INFOPLIST_FILE = "LunarCore/LunarCore-Info.plist";
@@ -538,6 +543,7 @@
 			baseConfigurationReference = 41D0ADD6BBAF19E0254BC04E /* Pods-LunarCore_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KH6L6V698J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LunarCore/LunarCore-Prefix.pch";
 				INFOPLIST_FILE = "LunarCore/LunarCore-Info.plist";

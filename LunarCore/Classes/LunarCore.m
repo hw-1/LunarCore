@@ -990,7 +990,7 @@ NSInteger getGanZhiIndex(NSString* gznZhi){
 
 ///宜忌文件路径
 NSString * getYijipath(){
-    NSString* mainBundlePath = [[NSBundle mainBundle] resourcePath];
+    NSString* mainBundlePath = [[NSBundle bundleWithIdentifier:@"org.cocoapods.LunarCore"] resourcePath];
 //    NSString* frameworks = [mainBundlePath stringByAppendingPathComponent:@"Frameworks"];
 //    NSString* frameworkPath = [frameworks stringByAppendingPathComponent:@"LunarCore.framework"];
     NSString* BundlePath = [mainBundlePath stringByAppendingPathComponent:@"LunarCore.bundle"];
