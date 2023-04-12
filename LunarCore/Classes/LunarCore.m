@@ -14,10 +14,6 @@ static const int weekStart      = 0;        // 周首日（可改成 app 配置�
 
 /**
  *  获得本地化的字符串 这里 app 可以自行实现
- *
- *  @param text key
- *
- *  @return 本地化字符串
  */
 static inline NSString *i18n(NSString *key) {
     return key;
@@ -35,7 +31,7 @@ static inline NSString *$(NSString *text) {
 }
 
 // GMT 0 的时区
-NSTimeZone *timeZone() {
+NSTimeZone *timeZone(void) {
     static NSTimeZone *_timeZone = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -74,7 +70,7 @@ NSMutableArray *createMonthData(int year, int month, int len, int start) {
 }
 
 // 错误码表
-NSDictionary *errorCode() {
+NSDictionary *errorCode(void) {
     static NSDictionary *_errCode = nil;
     if (_errCode == nil) {
         _errCode = @{
@@ -101,7 +97,7 @@ NSString *formatDay(int month, int day) {
 static int springFestival[][211] = {{1,21},{2,9},{1,30},{2,17},{2,6},{1,26},{2,14},{2,2},{1,22},{2,10},{1,31},{2,19},{2,8},{1,29},{2,16},{2,4},{1,25},{2,13},{2,2},{1,22},{2,10},{1,30},{2,18},{2,6},{1,26},{2,14},{2,4},{1,23},{2,11},{2,1},{2,20},{2,8},{1,28},{2,16},{2,5},{1,24},{2,13},{2,2},{1,23},{2,10},{1,30},{2,17},{2,6},{1,26},{2,14},{2,4},{1,24},{2,11},{1,31},{2,19},{2,8},{1,27},{2,15},{2,5},{1,25},{2,13},{2,2},{1,22},{2,10},{1,29},{2,17},{2,6},{1,27},{2,14},{2,3},{1,24},{2,12},{1,31},{2,18},{2,8},{1,28},{2,15},{2,5},{1,25},{2,13},{2,2},{1,21},{2,9},{1,30},{2,17},{2,6},{1,27},{2,15},{2,3},{1,23},{2,11},{1,31},{2,18},{2,7},{1,28},{2,16},{2,5},{1,25},{2,13},{2,2},{2,20},{2,9},{1,29},{2,17},{2,6},{1,27},{2,15},{2,4},{1,23},{2,10},{1,31},{2,19},{2,7},{1,28},{2,16},{2,5},{1,24},{2,12},{2,1},{1,22},{2,9},{1,29},{2,18},{2,7},{1,26},{2,14},{2,3},{1,23},{2,10},{1,31},{2,19},{2,8},{1,28},{2,16},{2,5},{1,25},{2,12},{2,1},{1,22},{2,10},{1,29},{2,17},{2,6},{1,26},{2,13},{2,3},{1,23},{2,11},{1,31},{2,19},{2,8},{1,28},{2,15},{2,4},{1,24},{2,12},{2,1},{1,22},{2,10},{1,30},{2,17},{2,6},{1,26},{2,14},{2,2},{1,23},{2,11},{2,1},{2,19},{2,8},{1,28},{2,15},{2,4},{1,24},{2,12},{2,2},{1,21},{2,9},{1,29},{2,17},{2,5},{1,26},{2,14},{2,3},{1,23},{2,11},{1,31},{2,19},{2,7},{1,27},{2,15},{2,5},{1,24},{2,12},{2,2},{1,22},{2,9},{1,29},{2,17},{2,6},{1,26},{2,14},{2,3},{1,24},{2,10},{1,30},{2,18},{2,7},{1,27},{2,15},{2,5},{1,25},{2,12},{2,1},{1,21},{2,9}};
 
 // 农历数据
-NSDictionary *lunarCalendarData() {
+NSDictionary *lunarCalendarData(void) {
     static NSDictionary *_lunarCalendarData = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -276,7 +272,7 @@ NSDictionary *lunarCalendarData() {
  * 从0小寒起算
  */
 
-NSArray *termInfo() {
+NSArray *termInfo(void) {
     static NSArray *_termInfo = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -292,7 +288,7 @@ NSArray *termInfo() {
 
 
 // 中国节日放假安排，外部设置，0无特殊安排，1工作，2放假
-NSMutableDictionary *worktime() {
+NSMutableDictionary *worktime(void) {
     static NSMutableDictionary *_worktime = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -312,7 +308,7 @@ NSMutableDictionary *worktime() {
 // 公历节日
 // 星号表示不重要的节日
 // 破折号前面的是缩略写法
-NSDictionary *solarFestival() {
+NSDictionary *solarFestival(void) {
     static NSDictionary *_solarFestival = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -347,7 +343,7 @@ NSDictionary *solarFestival() {
 }
 
 // 农历节日
-NSDictionary *lunarFestival() {
+NSDictionary *lunarFestival(void) {
     static NSDictionary *_lunarFestival = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -374,7 +370,7 @@ NSDictionary *lunarFestival() {
 }
 
 // 周节日
-NSDictionary *weekFestival() {
+NSDictionary *weekFestival(void) {
     static NSDictionary *_weekFestvial = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -388,7 +384,7 @@ NSDictionary *weekFestival() {
 }
 
 // 节气
-NSDictionary *solarTerms() {
+NSDictionary *solarTerms(void) {
     static NSDictionary *_solarTerms = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -952,7 +948,7 @@ NSString* getLunarDayName(NSTimeInterval date) {
     return cyclical(dayCyclical);
 }
 
-/** 根据生日计算星座  @param birthday 生日 eg:2016-10-25  @return 星座 */
+/** 根据生日计算星座   birthday 生日 eg:2016-10-25  @return 星座 */
 NSString* getAstroWithBirthday(NSInteger month,NSInteger day) {
     NSString *astroString = @"魔羯水瓶双鱼白羊金牛双子巨蟹狮子处女天秤天蝎射手魔羯";
     NSString *astroFormat = @"102123444543";
@@ -989,7 +985,7 @@ NSInteger getGanZhiIndex(NSString* gznZhi){
 }
 
 ///宜忌文件路径
-NSString * getYijipath(){
+NSString * getYijipath(void){
     NSString* mainBundlePath = [[NSBundle bundleWithIdentifier:@"org.cocoapods.LunarCore"] resourcePath];
 //    NSString* frameworks = [mainBundlePath stringByAppendingPathComponent:@"Frameworks"];
 //    NSString* frameworkPath = [frameworks stringByAppendingPathComponent:@"LunarCore.framework"];
@@ -1167,15 +1163,15 @@ int getSolarMonthDays(int year, int month) {
  *
  *  @return 格式化后的日期
  */
-NSMutableDictionary *formatDate(int year, int month, int day) {
+NSMutableDictionary *formatDate(NSInteger year, NSInteger month, NSInteger day) {
     
     NSDate *now = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     gregorian.timeZone = timeZone();
     NSDateComponents *components = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:now];
-    int _year = year;
-    int _month = month - 1;
-    int _day = (day > 0) ? day: (int)components.day;
+    NSInteger _year = year;
+    NSInteger _month = month - 1;
+    NSInteger _day = (day > 0) ? day: (NSInteger)components.day;
     
     if (year < (minYear ? minYear : minYear + 1) || year > maxYear) {
         return [@{@"error": @100, @"msg": errorCode()[@100]} mutableCopy];
@@ -1197,7 +1193,7 @@ NSMutableDictionary *formatDate(int year, int month, int day) {
  *
  *  @return YES 表示处于农历新年
  */
-BOOL isNewLunarYear(int _year, int _month, int _day) {
+BOOL isNewLunarYear(NSInteger _year, NSInteger _month, NSInteger _day) {
     
     int *springFestivalDate = springFestival[_year - minYear];
     int springFestivalMonth = springFestivalDate[0];
@@ -1314,7 +1310,7 @@ int getDaysBetweenZheng(int year, int month, int day) {
 
 /**
  * 将农历转换为公历
- * @param year,month,day 农历年，月(1-13，有闰月)，日
+ * 农历年，月(1-13，有闰月)，日
  */
 NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     
@@ -1370,7 +1366,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     return self;
 }
 
--(NSString*)yiji{
+-(NSDictionary*)yiji{
     if (_yiji == nil){
         NSString * yijiPath = getYijipath();
         NSDictionary * yiji =  [NSDictionary dictionaryWithContentsOfFile:yijiPath];
@@ -1554,7 +1550,7 @@ NSMutableDictionary *lunarToSolar(int _year, int _month, int _day) {
     
     NSArray * weekdayAlias = lunarCalendarData()[@"weekdayAlias"];
     NSString * weekSymbol = [NSString stringWithFormat:@"星期%@",weekdayAlias[weekday - 1]];
-    NSString * shortSolarSymbol = [NSString stringWithFormat:@"%ld月%d日",(long)_month,_day];
+    NSString * shortSolarSymbol = [NSString stringWithFormat:@"%ld月%ld日",(long)_month,(long)_day];
     NSString * sorlarDay = [NSString stringWithFormat:@"%ld",(long)_day];
     
     

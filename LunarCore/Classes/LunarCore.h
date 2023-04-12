@@ -24,7 +24,7 @@ NSMutableDictionary *calendar(int _year, int _month);
  *
  *  @param _year  农历年
  *  @param _month 农历月
- *  @param _month 农历日
+ *  @param _day 农历日
  *
  *  @return 公历年月日
  */
